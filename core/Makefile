@@ -4338,7 +4338,7 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) \
 	@echo "Package OTA: $@"
 	$(call build-ota-package-target,$@,-k $(KEY_CERT_PAIR) --output_metadata_path $(INTERNAL_OTA_METADATA))
 
-LEGION_TARGET_PACKAGE := $(PRODUCT_OUT)/$(LEGION_BUILD_VERSION).zip
+LEGION_TARGET_PACKAGE := $(PRODUCT_OUT)/$(LEGION_VERSION).zip
 .PHONY: otapackage legion
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 legion: otapackage
@@ -4352,7 +4352,7 @@ legion: otapackage
 	@echo -e ${CL_RED}"                                         LegionOS by RajKale99                                      "${CL_RED}
 	@echo -e ${CL_YLW}"*****************************************************************************************************************"${CL_RED}
 	@echo -e ${CL_RED}"                                                                                                                 "${CL_RED}
-	@echo -e ${CL_BLD}${CL_YLW}"Zip: "${CL_YLW} $(LEGION_TARGET_PACKAGE)${CL_YLW}
+	@echo -e ${CL_BLD}${CL_YLW}"Zip: "${CL_YLW}" $(LEGION_TARGET_PACKAGE) "${CL_YLW}
 	@echo -e ${CL_BLD}${CL_YLW}"MD5: "${CL_YLW}" `cat $(LEGION_TARGET_PACKAGE).md5sum | awk '{print $$1}' `"${CL_YLW}
 	@echo -e ${CL_BLD}${CL_YLW}"Size:"${CL_YLW}" `du -sh $(LEGION_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_YLW}
 	@echo -e ${CL_BLD}${CL_YLW}"id:"${CL_YLW}"`sha256sum $(LEGION_TARGET_PACKAGE) | cut -d ' ' -f 1`"${CL_YLW}
