@@ -950,8 +950,8 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print("**         Android Q                **");
   script.Print("**************************************");
 
-  legionversion = target_info.GetBuildProp("ro.legionversion")
-  androidver = target_info.GetBuildProp("ro.modversion")
+  legionversion = target_info.GetBuildProp("ro.legion.display.version")
+  androidver = target_info.GetBuildProp("ro.build.version.release")
   buildtype = target_info.GetBuildProp("ro.build.type")
   buildid = target_info.GetBuildProp("ro.build.id")
   buildday = target_info.GetBuildProp("ro.build.date")
