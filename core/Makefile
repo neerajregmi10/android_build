@@ -4344,7 +4344,7 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 legion: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(LEGION_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(LEGION_TARGET_PACKAGE) > $(LEGION_TARGET_PACKAGE).md5sum
-	@echo -e ${CL_RED}"**************************************************************"${CL_RED}
+	@echo -e ${CL_YLW}"**************************************************************"${CL_YLW}
 	@echo -e ${CL_RED}"eee....eeeeee..eeeeee..eee..eeeeee..eeeeeee...eeeeee...eeeeee."${CL_RED}
 	@echo -e ${CL_RED}"@@@::::@@@@@@:@@@@@@@@:@@@:@@@@@@@@:@@@@@@@@:@@@@@@@@:@@@@@@@:"${CL_RED}
 	@echo -e ${CL_RED}"%%%----%%%----%%%------%%%-%%%--%%%-%%%--%%%-%%%--%%%-%%%-----"${CL_RED}
@@ -4354,15 +4354,16 @@ legion: otapackage
 	@echo -e ${CL_RED}"::::::#::::::#::::::::#:::#::::::::#:::##:::#::::::::#:::::::#"${CL_RED}
 	@echo -e ${CL_RED}"......@......@@......@@...@@......@@...@@...@@......@@......@@"${CL_RED}
 	@echo -e ${CL_RED}"                                                              "${CL_RED}
-	@echo -e ${CL_RED}"=========================Package Complete====================="${CL_CYAN}
-	@echo -e ${CL_RED}"                       LegionOS by RajKale99                  "${CL_BLUE}
-	@echo -e ${CL_YLW}"**************************************************************"${CL_RED}
+	@echo -e ${CL_CYAN}"=========================Package Complete====================="${CL_CYAN}
+	@echo -e ${CL_BLUE}"                       LegionOS by RajKale99                  "${CL_BLUE}
+	@echo -e ${CL_YLW}"**************************************************************"${CL_YLW}
 	@echo -e ${CL_RED}"                                                              "${CL_RED}
 	@echo -e ${CL_BLD}${CL_YLW}"Zip: "${CL_YLW}" $(LEGION_TARGET_PACKAGE) "${CL_YLW}
 	@echo -e ${CL_BLD}${CL_YLW}"MD5: "${CL_YLW}" `cat $(LEGION_TARGET_PACKAGE).md5sum | awk '{print $$1}' `"${CL_YLW}
-	@echo -e ${CL_BLD}${CL_YLW}"Size:"${CL_YLW}" `du -sh $(LEGION_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_YLW}
-	@echo -e ${CL_BLD}${CL_YLW}"id:"${CL_YLW}"`sha256sum $(LEGION_TARGET_PACKAGE) | cut -d ' ' -f 1`"${CL_YLW}
-	@echo -e ${CL_BLD}${CL_RED}"========================================================================================================="${CL_RED}
+	@echo -e ${CL_BLD}${CL_YLW}"Size:"${CL_YLW}" `wc -c $(LEGION_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_YLW}
+	@echo -e ${CL_BLD}${CL_YLW}"Id:"${CL_YLW}"`sha256sum $(LEGION_TARGET_PACKAGE) | cut -d ' ' -f 1`"${CL_YLW}
+        @echo -e ${CL_BLD}${CL_YLW}"Timestamp:"${CL_YLW}"`grep ro\.build\.date\.utc $OUT/system/build.prop | cut -d= -f2) `"${CL_YLW}
+	@echo -e ${CL_BLD}${CL_RED}"====================================================="${CL_RED}
 
 ifeq ($(BOARD_BUILD_RETROFIT_DYNAMIC_PARTITIONS_OTA_PACKAGE),true)
 name := $(TARGET_PRODUCT)
